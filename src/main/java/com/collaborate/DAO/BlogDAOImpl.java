@@ -2,7 +2,10 @@ package com.collaborate.DAO;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,11 +16,12 @@ public class BlogDAOImpl implements BlogDAO {
 	
 	@Autowired
 	SessionFactory sessionFactory;
+	
 	public BlogDAOImpl(SessionFactory sessionFactory)
 	{
 		this.sessionFactory=sessionFactory;
 	}
-	
+	@Transactional
 	public boolean createBlog(Blog blog)
 	{
 	try
@@ -32,29 +36,83 @@ public class BlogDAOImpl implements BlogDAO {
 	}
 	
 }
-
-	public Blog getBlog(int blogId) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Blog getBlogdetails(int blogId) {
+		
+		try
+		{
+			
+			
+			 return  (Blog)sessionFactory.getCurrentSession().createQuery("from Blog where blogId="+blogId);
+			
+			
+		}
+		catch(Exception e)
+		{
+			 System.out.println("Exception Arised"+e);
+			 return null;
+		}
 	}
-
-	public List<Blog> getBlogs() {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public List<Blog> getBlog() {
+		
+		 @SuppressWarnings("unchecked")
+		List<Blog> listBlog = (List<Blog>) sessionFactory.getCurrentSession().createQuery("from Blog");
+		 return listBlog;
 	}
-
+	@Transactional
 	public boolean approveBlog(Blog blog) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		try
+		{
+			blog.setStatus("A");
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised"+e);
+			return false;
+		}
 	}
-
+	@Transactional
 	public boolean editBlog(int blogId) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		try
+		{
+			
+			@SuppressWarnings("rawtypes")
+			Query query = (Query) sessionFactory.getCurrentSession().createQuery("update Blog where blogId="+blogId);
+			  query.executeUpdate();
+			return true;
+		}
+		catch(Exception e)
+		{
+				System.out.println("Exception Arised"+e);
+			 return false;
+		}
 	}
-
+	@Transactional
 	public boolean deleteBlog(int blogId) {
+		
+		try
+		{
+			
+			sessionFactory.getCurrentSession().delete(blogId);
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised"+e);
+			return false;
+		}
+	}
+	public Blog getBlog(int blogid) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+	public List<Blog> getblogs() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
