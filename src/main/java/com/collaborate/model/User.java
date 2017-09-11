@@ -1,7 +1,7 @@
 package com.collaborate.model;
 
 
-import java.util.Date;
+
 
 public class User {
 	private int userId;
