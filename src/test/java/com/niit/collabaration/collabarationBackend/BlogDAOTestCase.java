@@ -27,8 +27,8 @@ public class BlogDAOTestCase {
 	{
 		//Blog blog=new Blog();
 		blog.setBlogId(111);
-		blog.setBlogName("Dravid");
-		blog.setBlogContent("Dravid is a Cricket coach");
+		blog.setBlogName("Virat");
+		blog.setBlogContent("Virat is a Cricket player");
 		
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
@@ -43,8 +43,8 @@ public class BlogDAOTestCase {
 	{
 	Blog blog = new Blog();
 	blog.setBlogId(111);
-	blog.setBlogName("Dravid");
-	blog.setBlogContent("Dravid plays Cricket ");
+	blog.setBlogName("Virat");
+	blog.setBlogContent("virat plays Cricket ");
 	blog.setCreateDate(new java.util.Date());
 	blog.setUsername("naveen");
 	blog.setStatus("NA");
@@ -74,8 +74,8 @@ public class BlogDAOTestCase {
 	{
 		Blog blog=new Blog();
 		blog.setBlogId(111);
-		blog.setBlogName("Dravid");
-		blog.setBlogContent("Dravid is a Cricket Coach");
+		blog.setBlogName("Virat");
+		blog.setBlogContent("Virat is a Cricket player");
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
 		blog.setLikes(0);
