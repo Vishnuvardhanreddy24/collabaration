@@ -1,12 +1,16 @@
 package com.niit.collabaration.collabarationBackend;
 
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.collaborate.DAO.BlogDAO;
 import com.collaborate.model.Blog;
 
 public class BlogDAOTestCase {
-
 	static BlogDAO blogDAO;
 	static Blog blog;
 	@BeforeClass
@@ -18,14 +22,13 @@ public class BlogDAOTestCase {
 		blogDAO=(BlogDAO)annotationConfigAppContext.getBean("blogDAO");
 	    blog=(Blog)annotationConfigAppContext.getBean("blog");
 	}
-	
 	@Test
 	public void createBlogtest()
 	{
 		//Blog blog=new Blog();
 		blog.setBlogId(111);
-		blog.setBlogName("virat");
-		blog.setBlogContent("virat is a Cricket player");
+		blog.setBlogName("Dravid");
+		blog.setBlogContent("Dravid is a Cricket coach");
 		
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
@@ -34,22 +37,22 @@ public class BlogDAOTestCase {
 	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void editBlogTest()
 	{
 	Blog blog = new Blog();
 	blog.setBlogId(111);
-	blog.setBlogName("virat");
-	blog.setBlogContent("virat plays Cricket ");
+	blog.setBlogName("Dravid");
+	blog.setBlogContent("Dravid plays Cricket ");
 	blog.setCreateDate(new java.util.Date());
-	blog.setUsername("vishnu");
+	blog.setUsername("naveen");
 	blog.setStatus("NA");
 	blog.setLikes(0);
 	assertTrue("Problem in approving Blog",blogDAO.editBlog(blog.getBlogId()));	
 	}
 	
-	@Ignore
+	
 	@Test
 	public void deleteBlogTest()
 	{
@@ -71,14 +74,13 @@ public class BlogDAOTestCase {
 	{
 		Blog blog=new Blog();
 		blog.setBlogId(111);
-		blog.setBlogName("virat");
-		blog.setBlogContent("virat is a Cricket player");
-		
+		blog.setBlogName("Dravid");
+		blog.setBlogContent("Dravid is a Cricket Coach");
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
 		blog.setLikes(0);
 		assertTrue("Problem in approving Blog",blogDAO.approveBlog(blog));	
 	}
+}	
+
 	
-	
-}

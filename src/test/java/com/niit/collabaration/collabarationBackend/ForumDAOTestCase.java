@@ -1,5 +1,10 @@
 package com.niit.collabaration.collabarationBackend;
 
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.collaborate.DAO.ForumDAO;
