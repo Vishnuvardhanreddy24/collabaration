@@ -5,10 +5,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.collaborate.DAO.BlogDAO;
 import com.collaborate.model.Blog;
 
-public class BlogDAOTest {
+public class BlogDAOTestCase {
 
 	static BlogDAO blogDAO;
-	
+	static Blog blog;
 	@BeforeClass
 	public static void initialize()
 	{
@@ -16,16 +16,16 @@ public class BlogDAOTest {
 		annotationConfigAppContext.scan("com.collaborate");
 		annotationConfigAppContext.refresh();
 		blogDAO=(BlogDAO)annotationConfigAppContext.getBean("blogDAO");
-	
+	    blog=(Blog)annotationConfigAppContext.getBean("blog");
 	}
 	
 	@Test
 	public void createBlogtest()
 	{
-		Blog blog=new Blog();
+		//Blog blog=new Blog();
 		blog.setBlogId(111);
-		blog.setBlogName("vishnu");
-		blog.setBlogContent("vishnuvardhan");
+		blog.setBlogName("virat");
+		blog.setBlogContent("virat is a Cricket player");
 		
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
@@ -36,18 +36,49 @@ public class BlogDAOTest {
 	
 	@Ignore
 	@Test
+	public void editBlogTest()
+	{
+	Blog blog = new Blog();
+	blog.setBlogId(111);
+	blog.setBlogName("virat");
+	blog.setBlogContent("virat plays Cricket ");
+	blog.setCreateDate(new java.util.Date());
+	blog.setUsername("vishnu");
+	blog.setStatus("NA");
+	blog.setLikes(0);
+	assertTrue("Problem in approving Blog",blogDAO.editBlog(blog.getBlogId()));	
+	}
+	
+	@Ignore
+	@Test
+	public void deleteBlogTest()
+	{
+	Blog blog = new Blog();
+	blog.setBlogId(111);
+	assertTrue("Problem in approving Blog",blogDAO.deleteBlog(blog.getBlogId()));	
+	}
+	
+	@Ignore
+	@Test
+	public void getBlogTest()
+	{
+	Blog blog = new Blog();
+	blog.setBlogId(111);
+	}
+
+	@Test
 	public void approveBlogTest()
 	{
 		Blog blog=new Blog();
-		blog.setBlogId(1001);
-		blog.setBlogName("vishnuvardhan");
-		blog.setBlogContent("vishnu");
+		blog.setBlogId(111);
+		blog.setBlogName("virat");
+		blog.setBlogContent("virat is a Cricket player");
 		
 		blog.setCreateDate(new java.util.Date());
 		blog.setStatus("NA");
 		blog.setLikes(0);
-		assertTrue("Problem in approving Blog",blogDAO.approvedBlog(blog));	
-	}}
+		assertTrue("Problem in approving Blog",blogDAO.approveBlog(blog));	
+	}
 	
 	
-	
+}

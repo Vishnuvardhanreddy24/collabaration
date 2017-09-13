@@ -1,5 +1,10 @@
 package com.niit.collabaration.collabarationBackend;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.collaborate.DAO.ForumDAO;
+import com.collaborate.model.Forum;
+
 public class ForumDAOTestCase {
 static ForumDAO forumDAO;
 	
