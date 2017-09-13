@@ -2,6 +2,7 @@ package com.niit.collabaration.collabarationBackend;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.collaborate.DAO.BlogDAO;
 import com.collaborate.model.Blog;
 
 public class BlogDAOTest {
