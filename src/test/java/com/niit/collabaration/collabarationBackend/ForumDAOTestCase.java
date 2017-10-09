@@ -80,7 +80,4 @@ static ForumDAO forumDAO;
 
 	}
 	
-	
-	
-	
 }
